@@ -48,11 +48,7 @@ Create a Travel-app class and automate testing with data driven from SQL databas
 **To query all pets for an owner**<br>
 `SELECT animal.Name, animal.Species FROM Animal animal, Owner owner WHERE owner.Name = 'Floz';`
 
-
-
-
-
-
-
-
-
+**Examples of using the Factory**<br>
+`Cat jess = Factory.createCat("Jess");`<br>
+`Dog milo = Factory.createDog("Milo");`<br>
+`Owner floz = Factory.createOwner("Floz", "Bridgnorth");`<br>
