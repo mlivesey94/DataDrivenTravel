@@ -1,15 +1,25 @@
 package com.academy.travelapp;
 
+import java.util.UUID;
+
 public class Factory {
 	public static Cat createCat(String name) {
-		throw new RuntimeException("Not supported yet!");
+		return new CatDB(name);
 	}
 	
 	public static Dog createDog(String name) {
-		throw new RuntimeException("Not supported yet!");
+		return new DogDB(name);
 	}
 	
 	public static Owner createOwner(String name, String town) {
-		throw new RuntimeException("Not supported yet!");
+		return new OwnerDB(name, town);
+	}
+	
+	public static Cat loadedCat(UUID uuid, String name, int hunger) {
+		return new CatDB(uuid, name, hunger);
+	}
+	
+	public static Dog loadedDog(UUID uuid, String name, int hunger) {
+		return new DogDB(uuid, name, hunger);
 	}
 }

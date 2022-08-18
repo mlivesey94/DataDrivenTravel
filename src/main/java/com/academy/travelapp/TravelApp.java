@@ -3,7 +3,6 @@ package com.academy.travelapp;
 import java.io.Closeable;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Properties;
 import java.util.UUID;
@@ -42,18 +41,9 @@ public class TravelApp implements Closeable {
 		}
 	}
 	
-	public void read(String query) {
+	public void read(Processor processor, String query) {
 		try (Statement statement = this.connection.createStatement()) {
-			ResultSet results = statement.executeQuery(query);
-			
-			//
-			// Example of how to process
-			// Tailor to suit your schema!
-			//
-			
-			while (results.next()) {
-				System.out.println(results.getString("forename") + " " + results.getString("surname"));
-			}
+			processor.process(statement.executeQuery(query));
 		} catch(Exception ex) {
 			throw new RuntimeException("Failed to query from database!", ex);
 		}
